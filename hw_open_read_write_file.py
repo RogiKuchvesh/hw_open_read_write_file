@@ -23,20 +23,13 @@ def get_shop_list_by_dishes(my_dishes, person_count):
     calculation_products_dict = {}
     for one_dish in my_dishes:
         for ingredient in cook_book[one_dish]:
-            q = int(ingredient['quantity'])
-            # print(cook_book[one_dish])
-            # print(ingredient)
-            # print(ingredient['ingredient_name'])
+            q = int(ingredient['quantity'])            
             if ingredient['ingredient_name'] in list(calculation_products_dict.keys()):
-                q += int(ingredient['quantity'])
-                # print(calculation_products_dict.keys())
-                # ingredient['quantity'] += ingredient['quantity']
+                q += int(ingredient['quantity'])              
                 calculation_products_dict[ingredient['ingredient_name']] = {'measure':ingredient['measure'], 'quantity':q * person_count}
             else:                
                 calculation_products_dict[ingredient['ingredient_name']] = {'measure':ingredient['measure'], 'quantity':int(ingredient['quantity']) * person_count}
 
-
     return calculation_products_dict
    
-pprint(get_shop_list_by_dishes(my_dishes, 1))
-
+pprint(get_shop_list_by_dishes(my_dishes, 2))
