@@ -17,28 +17,26 @@ with open('recipes.txt', 'r', encoding='utf-8') as file:
 pprint(cook_book, sort_dicts=False)
 
 
-my_dishes = ['Омлет', 'Утка по-пекински', 'Запеченный картофель']
+my_dishes = ['Омлет', 'Утка по-пекински', 'Фахитос']
 dish_list = list(cook_book.keys())
-def get_shop_list_by_dishes(my_dishes, person_count):
-    ingredients_list = []   
+def get_shop_list_by_dishes(my_dishes, person_count): 
     calculation_products_dict = {}
     for one_dish in my_dishes:
-        if one_dish in dish_list:
-            ingredients_list.append(cook_book[one_dish])            
-            for dish_ingredients in ingredients_list:
-                for separate_ingredient in dish_ingredients:                    
-                    i = separate_ingredient['ingredient_name']
-                    m = separate_ingredient['measure']
-                    q = int(separate_ingredient['quantity'])
-                    # calculation_products_dict[i] = {'measure':m, 'quantity':q * person_count}                
-                    if i in calculation_products_dict.keys():
-                        q += int(separate_ingredient['quantity'])
-                        calculation_products_dict[i] = {'measure':m, 'quantity':q * person_count}
-                    else:
-                        calculation_products_dict[i] = {'measure':m, 'quantity':q * person_count}
+        for ingredient in cook_book[one_dish]:
+            q = int(ingredient['quantity'])
+            # print(cook_book[one_dish])
+            # print(ingredient)
+            # print(ingredient['ingredient_name'])
+            if ingredient['ingredient_name'] in list(calculation_products_dict.keys()):
+                q += int(ingredient['quantity'])
+                # print(calculation_products_dict.keys())
+                # ingredient['quantity'] += ingredient['quantity']
+                calculation_products_dict[ingredient['ingredient_name']] = {'measure':ingredient['measure'], 'quantity':q * person_count}
+            else:                
+                calculation_products_dict[ingredient['ingredient_name']] = {'measure':ingredient['measure'], 'quantity':int(ingredient['quantity']) * person_count}
+
 
     return calculation_products_dict
    
 pprint(get_shop_list_by_dishes(my_dishes, 1))
- 
-                #    - попытка переписать значение словаря, если продукт встречается в другом блюде еще раз
+
