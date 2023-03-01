@@ -43,8 +43,25 @@
 # f.read()
 # f.close()
 
+
+        # with open(fname) as infile:
+        #     outfile.write(infile.read())
+
+# class FilesChange:
 filenames = ['1.txt', '2.txt', '3.txt']
-with open('4.txt', 'w') as outfile:
-    for fname in filenames:
-        with open(fname) as infile:
-            outfile.write(infile.read())
+    # def make_list_with_metadata_path(self, filenames):
+for fname in filenames:
+    with open(fname, 'r', encoding='utf-8') as outfile:
+                # file_number = 1
+        # 		f_4.write(f'{file_number}.txt\n')		
+        # 		f_4.write(f'{str(len(f_1.readlines()))}\n')
+        # 		n = 1
+        # 		# f_4.write(str(file_number))
+        strings = outfile.readlines()
+                # new_file = FilesChange()
+        new_file = [fname.split('/')[-1], len(strings)] + [el.strip() for el in strings]
+        
+        print(new_new)
+                # print([fname.split('/')[-1], len(strings)] + [el.strip() for el in strings])
+                # return
+        

@@ -24,8 +24,8 @@
 
 # create_file_from_directory('C:\PYTHON\GIT\python_GitHub_projects\hw_open_read_write_file')
 
-filenames = ['1.txt', '2.txt', '3.txt']
-with open('4.txt', 'w') as outfile:
-    for fname in filenames:
-        with open(fname) as infile:
-            outfile.write(infile.read())
+# filenames = ['1.txt', '2.txt', '3.txt']
+# with open('4.txt', 'w') as outfile:
+#     for fname in filenames:
+#         with open(fname) as infile:
+#             outfile.write(infile.read())
